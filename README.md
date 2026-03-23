@@ -1,12 +1,12 @@
 # Agentic RAG System with Hybrid Retrieval
 
-An intelligent question-answering system that combines local document retrieval and live web search to answer user queries. Built on a self-correcting agentic pipeline, the system automatically decides whether to consult a local PDF knowledge base, search the web, or both — depending on the nature of the question.
+An intelligent question-answering system that combines local document retrieval and live web search to answer user queries. Built on a self-correcting agentic pipeline, the system automatically decides whether to consult a local PDF knowledge base, search the web, or both depending on the nature of the question.
 
 ---
 
 ## How It Works
 
-Unlike traditional RAG systems that always retrieve from a single source, this pipeline is **agentic** — it makes decisions at every step and corrects itself when something goes wrong.
+Unlike traditional RAG systems that always retrieve from a single source, this pipeline is **agentic**, it makes decisions at every step and corrects itself when something goes wrong.
 
 ```
 Query comes in
@@ -22,22 +22,22 @@ Are they relevant?
 Generate answer from merged context
     ↓
 Is the answer grounded?
-    No → Flag with warning ⚠️
-    Yes → Return clean answer ✅
+    No → Flag with warning 
+    Yes → Return clean answer 
 ```
 
 ---
 
 ## Key Features
 
-- **Adaptive routing** — the LLM decides whether to use local docs, the web, or both for each query
-- **Query rewriting** — if local retrieval fails, the query is automatically rewritten and retried up to 3 times
-- **Web fallback** — if local docs are not relevant, the system falls back to live web search automatically
-- **Multi-agent web retrieval** — a CrewAI crew of two agents (search + scraping) handles web retrieval
-- **Answer grounding verification** — the final answer is checked against the retrieved context to detect hallucinations
-- **Hybrid context fusion** — local and web knowledge are merged before final answer generation
-- **Streamlit UI** — upload any PDF and ask questions through a simple web interface
-- **FAISS caching** — vector database is saved to disk after the first run for faster subsequent queries
+- **Adaptive routing**: the LLM decides whether to use local docs, the web, or both for each query
+- **Query rewriting**: if local retrieval fails, the query is automatically rewritten and retried up to 3 times
+- **Web fallback**: if local docs are not relevant, the system falls back to live web search automatically
+- **Multi-agent web retrieval**: a CrewAI crew of two agents (search + scraping) handles web retrieval
+- **Answer grounding verification**: the final answer is checked against the retrieved context to detect hallucinations
+- **Hybrid context fusion**: local and web knowledge are merged before final answer generation
+- **Streamlit UI**: upload any PDF and ask questions through a simple web interface
+- **FAISS caching**: vector database is saved to disk after the first run for faster subsequent queries
 
 ---
 
@@ -45,9 +45,9 @@ Is the answer grounded?
 
 | Component | Technology |
 |---|---|
-| LLM (routing, grading, answering) | Groq — LLaMA 3.1 8B Instant |
+| LLM (routing, grading, answering) | Groq - LLaMA 3.1 8B Instant |
 | Vector Database | FAISS |
-| Embeddings | HuggingFace — all-MiniLM-L6-v2 |
+| Embeddings | HuggingFace - all-MiniLM-L6-v2 |
 | PDF Loading | LangChain PyPDFLoader |
 | Web Search | DuckDuckGo Search (free, no API key) |
 | Web Scraping | CrewAI + ScrapeWebsiteTool |
@@ -63,7 +63,6 @@ agentic-rag/
 ├── agentic_rag.py       # Core pipeline logic
 ├── app.py               # Streamlit UI
 ├── .env                 # API keys (not committed)
-├── requirements.txt     # Python dependencies
 └── README.md
 ```
 
@@ -82,7 +81,7 @@ GROQ_API_KEY=your_free_groq_key
 ```
 ---
 
-## 🚀 Running the App
+## Running the App
 
 ```bash
 streamlit run app.py
@@ -90,7 +89,7 @@ streamlit run app.py
 
 Then open your browser at `http://localhost:8501`, upload a PDF, and start asking questions.
 
-> **Note:** Use Chrome or Firefox — Safari is not fully compatible with Streamlit.
+> **Note:** Use Chrome or Firefox, Safari is not fully compatible with Streamlit.
 
 ---
 
